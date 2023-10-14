@@ -51,25 +51,34 @@ const Accordion = () => {
   };
 
   return (
-    <div className="accordion">
+    <div id="accordion" className="accordion">
       {panels.map((panel) => (
-        <div key={panel.id} className="border border-gray-300 rounded mb-4">
+        <div
+          key={panel.id}
+          className={`panel ${
+            panel.expanded ? "expanded" : ""
+          } border rounded mb-4`}
+        >
           <button
-            className="accordion-header bg-gray-200 p-4 flex justify-between items-center"
+            className="accordion-header bg-gray-200 p-4 flex justify-between cursor-pointer"
+            aria-expanded={panel.expanded}
             onClick={() => togglePanel(panel.id)}
           >
-            <h3 className="text-lg">{panel.title}</h3>
+            <h3>{panel.title}</h3>
             <i
               className={`fas fa-chevron-right icon transform transition-transform ${
                 panel.expanded ? "rotate-90" : ""
-              } text-gray-600`}
+              }`}
             ></i>
           </button>
-          {panel.expanded && (
-            <div className="panel-content p-4 border-t border-gray-300">
-              {panel.content}
-            </div>
-          )}
+          <div
+            id={`panel-content-${panel.id}`}
+            className="panel-content hidden p-4 border-t border-gray-200"
+            aria-labelledby={`panel-header-${panel.id}`}
+            role="region"
+          >
+            {panel.content}
+          </div>
         </div>
       ))}
     </div>
