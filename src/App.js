@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Accordion from "./components/accordion/Accordion";
 import Header from "./components/header/Header";
-
+import Carousel from "./components/Carousel/Carousel";
 import CourseGoalList from "./components/CourseGoals/CourseGoalList/CourseGoalList";
 import CourseInput from "./components/CourseGoals/CourseInput/CourseInput";
 import "./App.scss";
@@ -38,10 +38,16 @@ function App() {
     );
   }
 
+  const slides = [
+    { image: "slide1.jpg", alt: "Slide 1" },
+    { image: "slide2.jpg", alt: "Slide 2" },
+    { image: "slide3.jpg", alt: "Slide 3" },
+  ];
+
   return (
     <div>
-      {/* <Header /> */}
-      {/* <Accordion /> */}
+      <Header />
+      <Accordion />
       <section id="goal-form">
         <CourseInput onAddGoal={addGoalHandler} />
       </section>
@@ -54,6 +60,9 @@ function App() {
           />
         ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
         } */}
+      </section>
+      <section>
+        <Carousel slides={slides} />
       </section>
     </div>
   );

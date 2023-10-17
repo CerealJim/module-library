@@ -1,0 +1,60 @@
+/* Carousel.scss */
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden; /* Ensure only one slide is visible at a time */
+
+  .carousel-container {
+    display: flex;
+    transition: transform 0.5s; /* Smooth transition between slides */
+  }
+
+  .carousel-slides {
+    display: flex;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    flex: 0 0 auto;
+    padding: 20px; /* Adjust as needed */
+    box-sizing: border-box;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; /* Adjust to fit your design */
+    }
+
+    &.active {
+      flex: 0 0 100%; /* Show only one slide at a time */
+    }
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+
+    &.prev {
+      left: 0;
+    }
+
+    &.next {
+      right: 0;
+    }
+
+    &.rotate {
+      right: 60px;
+    }
+  }
+}
