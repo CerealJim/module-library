@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Accordion from "./components/accordion/Accordion";
-import Header from "./components/header/Header";
+import Accordion from "./components/Accordion/Accordion";
+import Header from "./components/Header/Header";
 import Carousel from "./components/Carousel/Carousel";
 import CourseGoalList from "./components/CourseGoals/CourseGoalList/CourseGoalList";
 import CourseInput from "./components/CourseGoals/CourseInput/CourseInput";
@@ -47,19 +47,14 @@ function App() {
   return (
     <div>
       <Header />
-      <Accordion />
-      <section id="goal-form">
-        <CourseInput onAddGoal={addGoalHandler} />
+      <section>
+        <Accordion />
       </section>
-      <section id="goals">
-        {content}
-        {/* {courseGoals.length > 0 && (
-          <CourseGoalList
-            items={courseGoals}
-            onDeleteItem={deleteItemHandler}
-          />
-        ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-        } */}
+      <section>
+        <div id="goal-form">
+          <CourseInput onAddGoal={addGoalHandler} />
+        </div>
+        <div id="goals">{content}</div>
       </section>
       <section>
         <Carousel slides={slides} />
